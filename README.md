@@ -9,9 +9,7 @@ This is the supplementary material for the MSc Project - Automatic Detection of 
 
 Paediatric speech sound disorders (SSD) can present themselves in a child of any age and if left untreated they can lead to developmental issues later in life. There is a shortage of Paediatric Speech and Language Therapists (SLT) in the UK and therefore many disordered children are being left untreated. Recent developments in automatic speech recognition, powered by progress in machine learning, have shown that machines are capable of transcribing speech to a high level of accuracy. This paper presents the idea that similar models could be trained to detect errors in speech. To this end I present an application designed to replace the current process of manual SSD diagnosis and by extension reduce the burden on SLT.
 
-This project creates two Spectrogram-CNN based machine learning models trained on the UltraSuite dataset (Eshky et al., 2018). The first model is designed to transcribe a child’s speech phonetically, whilst the second model predicts if a speech sample is likely to be disordered. We achieve accuracies of 77% and 88% for the phoneme and word level models respectively. The word level model is then used in a web front end which serves as a proof of concept for how the model may be implemented to help alleviate some SLT workload. A survey of 15 professional paediatric speech and language therapists demonstrated that the proposed website could not serve as a full replacement of their initial assessment process. But it was suggested that this technology may find use as a screening tool to be used by parents and schools prior to referral to initial assessments. 
-
-
+This project creates two Spectrogram-CNN based machine learning models trained on the UltraSuite dataset (Eshky et al., 2018). The first model is designed to transcribe a child’s speech phonetically, whilst the second model predicts if a speech sample as a whole is likely to be disordered. We achieve accuracies of 77% and 88% for the phoneme and word level models respectively. The word level model is then used in a web front end which serves as a proof of concept for how the model may be implemented to help alleviate some SLT workload. A survey of 15 professional paediatric speech and language therapists demonstrated that the proposed website could not serve as a full replacement of their initial assessment process. But it was suggested that this technology may find use as a screening tool to be used by parents and schools prior to referral to initial assessments. 
 
 <h1> Folder Structure </h1>
 
@@ -60,6 +58,10 @@ Note: The full dataset used for training the models is not in this folder becaus
 - Upload these datasets to a google drive account (this may take some time) <br>
 - Edit the code to suit your own google drive directory
 
+## Notes on missing files
+
+- The models are not present in this repository due to their size which was 1.61GB per model (One model per word, 5 models in total).
+- The standard example of speech to which the input speech has been removed to respect Ultrasuite's ownership of this data.
 
 ## References For Development
 - [Using the MediaRecorder API](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder_API/Using_the_MediaRecorder_API): Explains in detail how the Web Dictaphone works.
