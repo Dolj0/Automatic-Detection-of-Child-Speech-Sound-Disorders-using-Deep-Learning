@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+
+
+</head>
+<body>
+
+  <div class="headone">
+    <h2>The Center for Speech and Language Therapy</h2>
+</div>
+<div class="headtwo">
+    <h1>Initial Assesment for Paediatric Speech Sound Disorders</h1>
+</div>
+
+<br>
+<br>
+<br>
+
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 5</div>
+  <img src="{{ url_for('static', filename='swing.jpg') }}" style="max-width:100%; display: block; margin-left: auto; margin-right: auto;">
+  <button class="prompt" onclick="return confirm('WARNING: DO NOT SAY THE WORD FOR YOUR CHILD TO COPY\n\nPrompts:\n1-What\'s this?\n2-Is it a slide or a ??\n3-(state first syllable) Swa?');">Prompt?</button>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 5</div>
+  <img src="{{ url_for('static', filename='umbrella.jpg') }}" style="max-width:100%; display: block; margin-left: auto; margin-right: auto;">
+  <button class="prompt" onclick="return confirm('WARNING: DO NOT SAY THE WORD FOR YOUR CHILD TO COPY\n\nPrompts:\n1-What\'s this?\n2-We use it in the rain, it\'s a ??\n3-(state first syllable) Um?');">Prompt?</button>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 5</div>
+  <img src="{{ url_for('static', filename='queen.jpg') }}" style="max-width:100%; display: block; margin-left: auto; margin-right: auto;">
+  <button class="prompt" onclick="return confirm('WARNING: DO NOT SAY THE WORD FOR YOUR CHILD TO COPY\n\nPrompts:\n1-What\'s this?\n2-The king and the ??\n3-(state first syllable) Kwa?');">Prompt?</button>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 5</div>
+  <img src="{{ url_for('static', filename='helicopter.jpg') }}" style="max-width:100%; display: block; margin-left: auto; margin-right: auto;">
+  <button class="prompt" onclick="return confirm('WARNING: DO NOT SAY THE WORD FOR YOUR CHILD TO COPY\n\nPrompts:\n1-What\'s this?\n2-It\'s not a plane it\'s a ??\n3-(state first syllable) Heh?');">Prompt?</button>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">5 / 5</div>
+  <img src="{{ url_for('static', filename='orange.jpg') }}" style="max-width:100%; display: block; margin-left: auto; margin-right: auto;">
+  <button class="prompt" onclick="return confirm('WARNING: DO NOT SAY THE WORD FOR YOUR CHILD TO COPY\n\nPrompts:\n1-What\'s this?\n2-It\'s not an apple, it\'s an ??\n3-(state first syllable) o?');">Prompt?</button>
+</div>
+
+
+<a class="prev" onclick="plusSlides(-1)">&#10094</a>
+<a class="next" onclick="plusSlides(1)">&#10095</a>
+
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span> 
+</div>
+
+</div>
+
+
+
+<br>
+
+<section class="main-controls">
+  <canvas class="visualizer" height="60px"></canvas>
+  <div id="buttons">
+    <button class="record">Record</button>
+    <button class="stop">Stop</button>
+    <form form onsubmit="return confirm('Are you sure you want to submit your recordings? This action can take up to 10 minutes');" action="/submit" method="post">
+      <button class="test" name="submitButton" type="submit" style="background: orangered; width: 100%">Submit</button>
+    </form>
+  </div>
+</section>
+
+<section class="sound-clips">
+
+</section>
+
+<br>
+
+
+
+<label for="toggle">&#10068</label>
+<input type="checkbox" id="toggle" >
+<aside style="margin-top: 100px;">
+  <h2>Information</h2>
+  <div class="instructions1">
+    <h3>Parent/Guardian Instructions: </h3>
+    <ul>
+        <li>After Clicking "Proceed", you will be presented with an image and a text prompt that denote a specific word</li>
+        <li>You should encourage your child to speak the word without spelling it or saying it, once your child knows the word, use the 'record' and 'stop' buttons to record their speech</li>
+        <li>You may re-record the word as many times as you like, remember that you should try to capture a true representation of your child's speech to obtain the most accurate results</li>
+        <li>Once happy with the recording, please click the arrow on the right hand side of the picture to move onto the next word. Don't worry, you can always come back if you would like to re-record</li>
+        <li>Once all five words have been recorded, click the 'Submit' button, this may take up to 10 minutes.</li>
+        <li>You will then receive percentage accuracies for each word, as well as suggestions for future action</li>
+    </ul>
+  </div>
+  <p>Web dictaphone is built using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.getUserMedia">getUserMedia</a> and the <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder_API">MediaRecorder API</a>, which provides an easier way to capture Media streams.</p>
+  <p>Icon courtesy of <a href="http://findicons.com/search/microphone">Find Icons</a>. Thanks to <a href="http://soledadpenades.com/">Sole</a> for the Oscilloscope code!</p>
+</aside>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='scripts/app.js')}}"></script>
+
+
+</body>
+</html> 

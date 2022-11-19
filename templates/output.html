@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+</head>
+<body>
+    <div class="headone">
+        <h2>The Center for Speech and Language Therapy</h2>
+    </div>
+    <div class="headtwo">
+        <h1>Initial Assesment for Paediatric Speech Sound Disorders</h1>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="instructions">
+        <h3>Results and Suggestions: </h3>
+        <h4>Table 1</h4>
+        <ul>
+            <li>Percentage Correctness denotes the how close to your child's speech is to a standard pronunciation, with 100% being a perfect match.</li>
+            <li>For this test we consider that a score of lower than 50% to be indicative of a speech sound disorder</li>
+        </ul>
+        
+        <table>
+            <tr>
+                <th>Word</th>
+                <th>Percentage Correctness (%)</th>
+            </tr>
+            <tr>
+                <td>Helicopter</td>
+                <td>{{helicopter}}</td>
+            </tr>
+            <tr>
+                <td>Orange</td>
+                <td>{{orange}}</td>
+            </tr>
+            <tr>
+                <td>Queen</td>
+                <td>{{queen}}</td>
+            </tr>
+            <tr>
+                <td>Swing</td>
+                <td>{{swing}}</td>
+            </tr>
+            <tr>
+                <td>Umbrella</td>
+                <td>{{umbrella}}</td>
+            </tr>
+        </table>
+
+        <br>
+
+        <h4>Table 2</h4>
+        <ul>
+            <li>Given the results of the percentage correctness, this table lists the common sound disorders associated with the above words that scored less than 50%</li>
+            <li>The right column denotes how often these disorders occurs within your test, for example a count of 2 would mean that two of the mispronounced words could indicate that particular sound disorder</li>
+        </ul>
+
+        <br>
+
+        <table>
+            <tr>
+                {% for header in count_head%}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in disorder_count %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>    
+            {% endfor %}
+        </table>
+
+        <br>
+
+        <h4>Table 3</h4>
+        <ul>
+            <li>This table gives further insight into the possible sound disorders associated with your test results</li>
+            <li>The summary column denotes the correct word and how that word would be pronounced given a certain disorder</li>
+            <li>The age to be resolved by column denotes what age a typically developing child may 'grow out of' a particular disorder</li>
+        </ul>
+
+        <br>
+
+        <table>
+            <tr>
+                {% for header in headings%}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in ordered_bespoke_df %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>    
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>

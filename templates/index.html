@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}" />
+
+<!-- slideshow code adapted from https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+<!-- Speech Recording code adapted from https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API/Using_the_MediaStream_Recording_API -->
+
+</head>
+<body>
+
+    <div class="headone">
+        <h2>The Center for Speech and Language Therapy</h2>
+    </div>
+    <div class="headtwo">
+        <h1>Initial Assesment for Paediatric Speech Sound Disorders</h1>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+
+    <div class="instructions">
+        <h3>Parent/Guardian Instructions: </h3>
+        <ul>
+            <li>After Clicking "Proceed", you will be presented with an image and a text prompt that denote a specific word</li>
+            <li>You should encourage your child to speak the word without spelling it or saying it, once your child knows the word, use the 'record' and 'stop' buttons to record their speech</li>
+            <li>You may re-record the word as many times as you like, remember that you should try to capture a true representation of your child's speech to obtain the most accurate results</li>
+            <li>Once happy with the recording, please click the arrow on the right hand side of the picture to move onto the next word. Don't worry, you can always come back if you would like to re-record</li>
+            <li>Once all five words have been recorded, click the 'Submit' button, this may take up to 10 minutes.</li>
+            <li>You will then receive percentage accuracies for each word, as well as suggestions for future action</li>
+        </ul>
+    </div>
+
+    <form action="/input" method="post">
+        <button style="margin-left: 5%">Proceed</button>
+    </form>
+    
+</body>
+</html>

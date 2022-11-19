@@ -1,0 +1,315 @@
+/* Alot of this css is based on that provided in the speech recording repository, https://github.com/mdn/dom-examples/tree/main/media/web-dictaphone */
+/* All resources used to support the code is fully referenced in the reference part of the project */
+
+
+* {box-sizing: border-box}
+body {margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+h1 { font-family: Frutiger; font-size: 38px; font-style: normal; font-variant: small-caps; font-weight: bold; line-height: 48px; } 
+h2 { font-family: Frutiger; font-size: 20px; font-style: normal; font-variant: small-caps; font-weight: bold; line-height: 20px; }
+h3 { font-family: Frutiger; font-size: 22px; font-style: normal; font-variant: normal; font-weight: bold; line-height: 20px; } 
+p { font-family: Frutiger; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } 
+blockquote { font-family: Frutiger; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } 
+pre { font-family: Frutiger; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5667px; }
+
+h1, h2 {
+  text-align: center;
+  font-weight: normal;
+  padding: 0.5rem 0 0 0;
+}
+
+h3 {
+  padding: 0.5rem 0 0 0;
+}
+
+.main-controls {
+  padding: 0rem 0;
+}
+
+
+canvas {
+  padding: 5px 0 5px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#buttons button {
+  font-size: 1rem;
+  padding: 1rem;
+  width: calc(33% - 0.25rem);
+}
+
+button {
+  font-size: 1rem;
+  background: #0088cc;
+  text-align: center;
+  color: white;
+  border: none;
+  transition: all 0.2s;
+  padding: 0.5rem;
+}
+
+button:hover, button:focus {
+  box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 1);
+  background: #0ae;
+}
+
+button:active {
+  box-shadow: inset 0px 0px 20px rgba(0,0,0,0.5);
+  transform: translateY(2px);
+}
+
+form {
+  width: 33%;
+  display: inline;
+}
+
+section, article {
+  display: block;
+}
+
+.clip {
+  padding-bottom: 1rem;
+}
+
+audio {
+  width: 100%;
+  display: block;
+  margin: 1rem auto 0.5rem;
+}
+
+.clip p {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.clip button {
+  font-size: 1rem;
+  float: right;
+}
+
+button.delete {
+  background: #f00;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+/* Checkbox hack to control information box display */
+
+label {
+  font-size: 3rem;
+  position: absolute;
+  top: 100px;
+  right: 3px;
+  z-index: 5;
+  cursor: pointer;
+  background-color: black;
+  border-radius: 10px;
+}
+
+input[type=checkbox] {
+   position: absolute;
+   top: -100px;
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(100%);
+  transition: 0.3s all ease-out;
+  background-color: #efefef;
+  padding: 1rem;
+}
+
+aside p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+aside a {
+  color: #666;
+}
+
+/* Toggled State of information box */
+input[type=checkbox]:checked ~ aside {
+  transform: translateX(0);
+}
+
+/* Cursor when clip name is clicked over */
+
+.clip p {
+  cursor: pointer;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  width: 80%;
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: black;
+  font-weight: bold;
+  font-size: 80px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: black;
+  font-size: 120;
+  font-weight: bold;
+  padding: 8px 12px;
+  /* position: absolute; */
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  /* position: absolute; */
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0px 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+
+.headone{
+  background: #005eb8;
+  width: 20%;
+  float: left;
+  color: white;
+  height: 100px;
+  border-right: solid;
+}
+
+.headtwo{
+  background: #005eb8;
+  width: 80%;
+  float: right;
+  color: white;
+  height: 100px;
+}
+
+.instructions{
+  width: 80%;
+  padding: 12px 12px 12px 12px;
+  margin-top: 30px;
+}
+
+.instructions1{
+  width: 80%;
+  padding: 12px 12px 12px 12px;
+}
+
+table {
+  border-collapse:separate;
+  background-color: #48CAE4;
+  border:solid #023E8A 1px;
+  border-radius:6px;
+  width: 90%;
+  margin-left: 5%;
+
+}
+
+td, th {
+  border-left:solid #023E8A 1px;
+  border-top:solid #023E8A 1px;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #0096C7;
+  border-top: none;
+}
+
+td:first-child, th:first-child {
+    border-left: none;
+}
+
+tr:nth-child(even) {
+  background-color: #CAF0F8;
+}
+
+.prompt{
+  display: block;
+  margin-left:95%;
+  margin-right:95%;
+  margin-top:10px;
+  width: 10%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 4px;
+  border-color: black;
+  border-width: 2px;
+  margin-top:20px;
+}
